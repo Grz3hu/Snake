@@ -1,10 +1,25 @@
+nodes=[1,2,3]
+length=3
+append=False
 
-class Directions(Enum):
-    TOP=(0,1)
-    BOTTOM=(0,-1)
-    LEFT=(-1,0)
-    RIGHT=(1,0)
-    NONE=(0,0)
+def move(newNode):
 
-d=Directions.TOP
-print(d.value())
+    global length
+    if append==False:
+        for n in reversed(range(1,length)):
+            nodes[n]=nodes[n-1]
+        nodes[0]=newNode
+    else:
+        length+=1
+        nodes.insert(0,newNode)
+
+move(4)
+print(nodes)
+
+append=True
+move(34)
+print(nodes)
+
+append=False
+move(2)
+print(nodes)

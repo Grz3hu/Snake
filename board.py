@@ -53,5 +53,4 @@ class Board:
         head=snake.getHead()
         if head.h==self.foodH and head.w==self.foodW:
             snake.append=True
-            snake.length+=1
             self.generateFood()

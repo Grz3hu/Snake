@@ -15,6 +15,12 @@ class SnakeNode:
        self.w=w 
        self.h=h 
 
+    def __str__(self):
+        return "dupa"
+    
+    def __repr__(self):
+        return "{} {}".format(self.w, self.h)
+
 class Snake:
     length=0
     nodes=[]
@@ -31,17 +37,14 @@ class Snake:
     def changeDirection(self,direction):
         self.direction=direction
 
-#    def listenKeys(self):
-#        keyboard.add_hotkey('w', self.changeDirection, args=(Directions.TOP))
-#        keyboard.add_hotkey('s', self.changeDirection, args=(Directions.BOTTOM))
-#        keyboard.add_hotkey('d', self.changeDirection, args=(Directions.RIGHT))
-#        keyboard.add_hotkey('a', self.changeDirection, args=(Directions.LEFT))
-
     def move(self):
         newNode=SnakeNode( w=self.nodes[0].w+self.direction.value[0], h=self.nodes[0].h+self.direction.value[1])
-        for n in range(1,self.length):
-            self.nodes[n-1]=self.nodes[n]
         if self.append==False:
-            self.nodes.pop() 
+            for n in reversed(range(1,len(self.nodes))):
+                self.nodes[n]=self.nodes[n-1]
+            self.nodes[0]=newNode
+        else:
+            self.length+=1
+            self.nodes.insert(0,newNode)
+
         self.append=False
-        self.nodes.insert(0,newNode)
