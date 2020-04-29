@@ -15,9 +15,6 @@ class SnakeNode:
        self.w=w 
        self.h=h 
 
-    def __str__(self):
-        return "dupa"
-    
     def __repr__(self):
         return "{} {}".format(self.w, self.h)
 

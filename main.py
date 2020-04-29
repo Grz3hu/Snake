@@ -14,18 +14,18 @@ def main():
     
     test.generateFood()
     test.foodH=0
-    test.foodW=5
+    test.foodW=11
     
     while(test.checkCollision(s)==False):
         test.drawSnake(s)
         test.drawFood()
+        test.checkFood(s)
+        s.move()
+        print("Score: {}".format(s.length))
         test.printBoard()
         test.clearBoard()
         time.sleep(0.1)
         system("clear") 
-        s.move()
-        test.checkFood(s)
-        print(s.nodes)
     
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:

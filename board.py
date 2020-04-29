@@ -13,7 +13,7 @@ class Board:
         self.width=width
 
     def printBoard(self):
-        print("-"*(self.width+1))
+        print("-"*(self.width))
 
         for h in range(self.height):
             for w in range(self.width):
@@ -23,18 +23,18 @@ class Board:
                     print(self.board[h][w],end="")
             print()
 
-        print("-"*(self.width+1))
+        print("-"*(self.width))
 
     def clearBoard(self):
         self.board = [[" " for y in range(self.width)] for x in range(self.height)]
 
     def generateFood(self):
         self.foodH=random.randint(0,self.height-1)
-        self.foodW=random.randint(0,self.width-1)
+        self.foodW=random.randint(1,self.width-2)
 
         while self.board[self.foodH][self.foodW]!=" ":
             self.foodH=random.randint(0,self.height-1)
-            self.foodW=random.randint(0,self.width-1)
+            self.foodW=random.randint(1,self.width-2)
 
     def drawFood(self):
         self.board[self.foodH][self.foodW]="x"
@@ -47,7 +47,7 @@ class Board:
 
     def drawSnake(self,snake):
         for s in snake.nodes:
-            self.board[s.h][s.w]="O"
+            self.board[s.h][s.w]="#"
 
     def checkFood(self,snake):
         head=snake.getHead()
